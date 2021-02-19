@@ -1,0 +1,21 @@
+.create-user {
+  background-color: #424242;
+  padding: 5px;
+}
+
+table {
+  width: 100%;
+
+  tr.mat-row, tr.mat-footer-row {
+    height: 58px !important;
+  }
+
+  .actions-column {
+    button {
+      margin-right: 15px;
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+} 
