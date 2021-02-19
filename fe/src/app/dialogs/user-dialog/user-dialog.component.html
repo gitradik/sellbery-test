@@ -1,0 +1,45 @@
+<h1 mat-dialog-title>{{title}}</h1>
+<mat-dialog-content *ngIf="form">
+    <form [formGroup]="form">
+        <mat-form-field color="accent">
+            <mat-label>Name</mat-label>
+
+            <input type="text" matInput [formControl]="form.get('name')">
+            
+            <mat-error *ngIf="form.get('name').hasError('required')">
+                Name is <strong>required</strong>
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field color="accent">
+            <mat-label>Email</mat-label>
+
+            <input type="email" matInput [formControl]="form.get('email')" placeholder="Ex. pat@example.com">
+            
+            <mat-error *ngIf="form.get('email').hasError('email') && !form.get('email').hasError('required')">
+                Please enter a valid email address
+            </mat-error>
+            <mat-error *ngIf="form.get('email').hasError('required')">
+                Email is <strong>required</strong>
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field color="accent" *ngIf="!data.id">
+            <mat-label>Password</mat-label>
+
+            <input type="password" matInput [formControl]="form.get('pass')">
+            
+            <mat-error *ngIf="form.get('pass').hasError('pattern') && !form.get('pass').hasError('required')">
+                Your password must contain at least <strong>5 characters + special character</strong>
+            </mat-error>
+            <mat-error *ngIf="form.get('pass').hasError('required')">
+                Email is <strong>required</strong>
+            </mat-error>
+        </mat-form-field>
+
+    </form>
+</mat-dialog-content>
+<div mat-dialog-actions>
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-button color="accent" (click)="onSubmit()">{{submitTxt}}</button>
+</div>
